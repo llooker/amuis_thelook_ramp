@@ -43,7 +43,7 @@ explore: events {
 }
 
 explore: inventory_items {
-  hidden:  yes
+  hidden:  no
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;

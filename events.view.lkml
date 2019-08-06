@@ -37,6 +37,16 @@ view: events {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: day_of_month{
+    type: date_day_of_month
+    sql:  ${created_date} ;;
+  }
+
+  dimension: day_of_week {
+    type: date_day_of_week
+    sql: ${created_date} ;;
+  }
+
   dimension: event_type {
     type: string
     sql: ${TABLE}.event_type ;;
