@@ -15,15 +15,25 @@ datagroup: four_hour_dataload {
 
 persist_with: anouk_thelook_ramp_default_datagroup
 
-explore: company_list {}
+explore: company_list {
+  hidden: yes
+}
 
-explore: daily_active {}
+explore: daily_active {
+  hidden: yes
+}
 
-explore: daily_activity {}
+explore: daily_activity {
+  hidden: yes
+}
 
-explore: distribution_centers {}
+explore: distribution_centers {
+  hidden: yes
+}
 
 explore: events {
+  label: "(1) Event Data"
+  hidden: no
   persist_with: four_hour_dataload
   join: users {
     type: left_outer
@@ -33,6 +43,7 @@ explore: events {
 }
 
 explore: inventory_items {
+  hidden:  yes
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
@@ -49,6 +60,7 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  hidden: yes
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
@@ -75,6 +87,7 @@ explore: order_items {
 }
 
 explore: products {
+  hidden: yes
   join: distribution_centers {
     type: left_outer
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
@@ -82,6 +95,15 @@ explore: products {
   }
 }
 
-explore: user_count_daily_rollup {}
+explore: user_count_daily_rollup {
+  hidden: yes
+}
 
-explore: users {}
+explore: users {
+  hidden: yes
+  join: events {
+    type: left_outer
+    sql: ${events.user_id} = ${users.id} ;;
+    relationship:  one_to_many
+  }
+}
