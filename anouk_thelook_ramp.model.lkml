@@ -13,16 +13,7 @@ datagroup: four_hour_dataload {
   max_cache_age: "4 hours"
 }
 
-
 persist_with: anouk_thelook_ramp_default_datagroup
-
-explore: a {
-  hidden: yes
-}
-
-explore: bsandell {
-  hidden: yes
-}
 
 explore: company_list {}
 
@@ -52,6 +43,8 @@ explore: inventory_items {
     type: left_outer
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
     relationship: many_to_one
+    fields: [distribution_centers.id, distribution_centers.latitude, distribution_centers.longitude, distribution_centers.name,
+      distribution_centers.count]
   }
 }
 
