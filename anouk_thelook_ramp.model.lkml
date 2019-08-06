@@ -20,7 +20,9 @@ explore: a {
   hidden: yes
 }
 
-explore: bsandell {}
+explore: bsandell {
+  hidden: yes
+}
 
 explore: company_list {}
 
