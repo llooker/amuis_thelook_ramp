@@ -35,7 +35,7 @@ explore: events {
   always_filter: {
     filters: {
       field: users.country
-      value: "US"
+      value: "USA"
     }
   }
   label: "(1) US Event Data"
