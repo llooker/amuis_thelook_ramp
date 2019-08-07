@@ -10,6 +10,7 @@ view: inventory_items {
   dimension: cost {
     type: number
     sql: ${TABLE}.cost ;;
+    value_format: "usd"
   }
 
   dimension_group: created {
@@ -34,6 +35,11 @@ view: inventory_items {
   dimension: product_category {
     type: string
     sql: ${TABLE}.product_category ;;
+  }
+
+  dimension: product_brand_cat {
+      type: string
+      sql:  ${TABLE}.product_brand || ' ' || ${TABLE}.product_category ;;
   }
 
   dimension: product_department {

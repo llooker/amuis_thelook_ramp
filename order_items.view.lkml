@@ -90,6 +90,11 @@ view: order_items {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension:  is_luxury_item {
+    type: yesno
+    sql: ${TABLE}.sale_price > 200 ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
