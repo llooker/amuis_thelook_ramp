@@ -14,9 +14,37 @@ view: users {
 
   dimension: age_tier {
     type: tier
-    tiers: [10,17,25,35,50,70]
+    drill_fields: [age]
+    tiers: [10,15,20,25,30,35,40,45,50,55,60,65,70]
     sql:  ${age} ;;
     style: integer
+  }
+
+  dimension: age_group {
+    drill_fields: [age_tier, age]
+    case: {
+      when: {
+        sql: ${TABLE}.age BETWEEN 0 AND 12 ;;
+        label: "kids"
+      }
+      when: {
+        sql: ${TABLE}.age BETWEEN 12 AND 17 ;;
+        label: "teenagers"
+      }
+      when: {
+        sql: ${TABLE}.age BETWEEN 17 AND 25 ;;
+        label: "adolescents"
+      }
+      when: {
+        sql: ${TABLE}.age BETWEEN 25 AND 65 ;;
+        label: "adults"
+      }
+      when: {
+        sql: ${TABLE}.age > 65 ;;
+        label: "eldery"
+      }
+      else: "unknown"
+    }
   }
 
   dimension: city {

@@ -108,6 +108,21 @@ view: events {
     sql: ${TABLE}.zip ;;
   }
 
+  measure: east_coast_count {
+    type: count
+    filters: {
+      field: state
+      value: "ME, VT, NH, MA, RI, CT, NY, NJ, PA, DE, MD, WV, VA, NC, SC, GA, AL, FL"
+    }
+  }
+
+  measure: percent_east_coast {
+    type: number
+    sql: 100.0 * NULLIF(${east_coast_count},0)/NULLIF(${count},0) ;;
+    drill_fields: [state, event_type, created_date]
+    value_format: "0.00\%"
+  }
+
   measure: count {
     type: count
     drill_fields: [id, users.id, users.first_name, users.last_name]

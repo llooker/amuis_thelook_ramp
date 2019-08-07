@@ -91,4 +91,29 @@ view: inventory_items {
     type: count
     drill_fields: [id, product_name, products.id, products.name, order_items.count]
   }
+
+  measure: total_cost {
+    #As far as I'm aware inventory_items is a normalized table, sum_distinct solely for tick-the-box-purpose exercise
+    drill_fields: [product_department, product_brand, product_name, product_retail_price]
+    type: sum_distinct
+    sql: ${cost} ;;
+  }
+
+  measure: total_cost_womens_department {
+    type: sum
+    drill_fields: [product_brand, product_category, cost]
+    filters: {
+      field: product_department
+      value: "Women"
+    }
+  }
+
+  measure: total_cost_mens_department {
+    type: sum
+    drill_fields: [product_brand, product_category, cost]
+    filters: {
+      field: product_department
+      value: "Men"
+    }
+  }
 }

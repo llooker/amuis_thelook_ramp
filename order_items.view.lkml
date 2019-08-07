@@ -100,6 +100,18 @@ view: order_items {
     drill_fields: [detail*]
   }
 
+  measure: total_sales_price {
+    type: sum
+    drill_fields: [detail*]
+    sql:${TABLE}.sale_price ;;
+  }
+
+  measure: profit {
+    drill_fields: [detail*]
+    type: number
+    sql: ${total_sales_price} - ${inventory_items.total_cost} ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
