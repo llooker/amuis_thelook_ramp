@@ -10,7 +10,7 @@ view: inventory_items {
   dimension: cost {
     type: number
     sql: ${TABLE}.cost ;;
-    value_format: "usd"
+    value_format: "$0.00"
   }
 
   dimension_group: created {
@@ -97,6 +97,7 @@ view: inventory_items {
     drill_fields: [product_department, product_brand, product_name, product_retail_price]
     type: sum_distinct
     sql: ${cost} ;;
+    value_format: "$0.00"
   }
 
   measure: total_cost_womens_department {
