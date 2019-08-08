@@ -112,7 +112,9 @@ view: events {
     type: count
     filters: {
       field: state
-      value: "ME, VT, NH, MA, RI, CT, NY, NJ, PA, DE, MD, WV, VA, NC, SC, GA, AL, FL"
+      value: "Maine, Vermont, New Hampshire, Massechusetts, Rhode Island, Connecticut,
+      New York, New Jersey, Pennsylvania, Delaware, Maryland, West Virginia, Virginia, North Carolina, South Carolina,
+      Georgia, Alabama, Florida"
     }
   }
 
