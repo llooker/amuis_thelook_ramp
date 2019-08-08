@@ -107,6 +107,7 @@ view: inventory_items {
       field: product_department
       value: "Women"
     }
+    sql: ${cost} ;;
   }
 
   measure: total_cost_mens_department {
@@ -116,5 +117,6 @@ view: inventory_items {
       field: product_department
       value: "Men"
     }
+    sql: ${cost} ;;
   }
 }
