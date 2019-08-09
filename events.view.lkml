@@ -120,9 +120,9 @@ view: events {
 
   measure: percent_east_coast {
     type: number
-    sql: 100.0 * NULLIF(${east_coast_count},0)/NULLIF(${count},0) ;;
+    sql: 1.0 * NULLIF(${east_coast_count},0)/NULLIF(${count},0) ;;
     drill_fields: [state, event_type, created_date]
-    value_format: "0.00\%"
+    value_format_name: percent_2
   }
 
   measure: count {

@@ -1,6 +1,8 @@
 view: inventory_items {
   sql_table_name: public.inventory_items ;;
 
+
+
   dimension: id {
     primary_key: yes
     type: number
@@ -46,6 +48,7 @@ view: inventory_items {
     type: string
     sql: ${TABLE}.product_department ;;
   }
+
 
   dimension: product_distribution_center_id {
     type: number
@@ -121,4 +124,27 @@ view: inventory_items {
     value_format: "$0.00"
     sql: ${cost} ;;
   }
+}
+
+view: extreme_orders {
+  derived_table: {
+    sql:
+      SELECT product_category, total_cost
+      FROM inventory_items
+      GROUP BY product_category
+      ORDER BY total_cost DESC
+      LIMIT 5
+      UNION
+      SELECT product_category, total_cost
+      FROM inventory_items
+      GROUP BY product_category
+      ORDER BY total_cost ASC
+      LIMIT 5;;
+  }
+
+  dimension: extreme_cost_cats {
+    type:  string
+    sql: ${TABLE.product_category} ;;
+  }
+
 }

@@ -66,7 +66,15 @@ explore: inventory_items {
     fields: [distribution_centers.id, distribution_centers.latitude, distribution_centers.longitude, distribution_centers.name,
       distribution_centers.count]
   }
+
+  join: extreme_costs {
+    type: inner
+    sql_on: inventory_items.id = extreme_costs.id ;;
+    relationship: one_to_one
+  }
+
 }
+
 
 explore: order_items {
   hidden: no
