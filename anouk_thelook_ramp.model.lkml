@@ -3,6 +3,8 @@ connection: "thelook_events"
 # include all the views
 include: "*.view"
 
+#include: "Anouks_LookML_dashb.dashboard"
+
 datagroup: anouk_thelook_ramp_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "24 hour"
