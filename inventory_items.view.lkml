@@ -97,7 +97,7 @@ view: inventory_items {
     drill_fields: [product_department, product_brand, product_name, product_retail_price]
     type: sum_distinct
     sql: ${cost} ;;
-    value_format: "$0.00"
+    value_format_name: usd
   }
 
   measure: total_cost_womens_department {
