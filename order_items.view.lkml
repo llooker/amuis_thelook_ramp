@@ -106,6 +106,11 @@ view: order_items {
     sql:${TABLE}.sale_price ;;
   }
 
+  measure: returned_count {
+    type: count_distinct
+    sql: ${returned_date} ;;
+  }
+
   measure: profit {
     drill_fields: [detail*]
     type: number
