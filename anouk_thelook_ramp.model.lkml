@@ -69,7 +69,7 @@ explore: inventory_items {
 
   join: extreme_cost_categories{
     type: inner
-    sql_on: inventory_items.id = extreme_costs.id ;;
+    sql_on: ${inventory_items.product_category} = ${extreme_cost_categories.product_category} ;;
     relationship: one_to_one
   }
 
