@@ -129,15 +129,15 @@ view: inventory_items {
 view: extreme_orders {
   derived_table: {
     sql:
-      SELECT product_category, total_cost
+      SELECT id, product_category, total_cost
       FROM inventory_items
-      GROUP BY product_category
+      GROUP BY id, product_category
       ORDER BY total_cost DESC
       LIMIT 5
       UNION
-      SELECT product_category, total_cost
+      SELECT id, product_category, total_cost
       FROM inventory_items
-      GROUP BY product_category
+      GROUP BY id, product_category
       ORDER BY total_cost ASC
       LIMIT 5;;
   }
