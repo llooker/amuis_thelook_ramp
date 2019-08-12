@@ -127,7 +127,7 @@ view: inventory_items {
 
 }
 
-  view: sql_runner_query {
+  view: extreme_cost_categories {
     derived_table: {
       sql: (SELECT product_category, SUM(cost) as total_cost
               FROM inventory_items

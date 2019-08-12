@@ -67,7 +67,7 @@ explore: inventory_items {
       distribution_centers.count]
   }
 
-  join: extreme_costs {
+  join: extreme_cost_categories{
     type: inner
     sql_on: inventory_items.id = extreme_costs.id ;;
     relationship: one_to_one
