@@ -124,27 +124,41 @@ view: inventory_items {
     value_format: "$0.00"
     sql: ${cost} ;;
   }
-}
-
-view: extreme_orders {
-  derived_table: {
-    sql:
-      SELECT id, product_category, total_cost
-      FROM inventory_items
-      GROUP BY id, product_category
-      ORDER BY total_cost DESC
-      LIMIT 5
-      UNION
-      SELECT id, product_category, total_cost
-      FROM inventory_items
-      GROUP BY id, product_category
-      ORDER BY total_cost ASC
-      LIMIT 5;;
-  }
-
-  dimension: extreme_cost_cats {
-    type:  string
-    sql: ${TABLE.product_category} ;;
-  }
 
 }
+
+  view: sql_runner_query {
+    derived_table: {
+      sql: (SELECT product_category, SUM(cost) as total_cost
+              FROM inventory_items
+              GROUP BY product_category
+              ORDER BY total_cost DESC
+              LIMIT 5)
+              UNION
+              (SELECT product_category, SUM(cost) as total_cost
+              FROM inventory_items
+              GROUP BY product_category
+              ORDER BY total_cost ASC
+              LIMIT 5)
+              ORDER BY 2 DESC;;
+    }
+
+    measure: count {
+      type: count
+      drill_fields: [detail*]
+    }
+
+    dimension: product_category {
+      type: string
+      sql: ${TABLE}.product_category ;;
+    }
+
+    dimension: total_cost {
+      type: number
+      sql: ${TABLE}.total_cost ;;
+    }
+
+    set: detail {
+      fields: [product_category, total_cost]
+    }
+  }
