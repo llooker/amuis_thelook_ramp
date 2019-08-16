@@ -1,6 +1,6 @@
 view: looker_user_data {
-  dimension: email {
-    html: <p>{{ user_attribute.name}} ;;
+  dimension: looker_user_name {
+    html: <p>{{ {{ _user_attributes['name'] }}}} </p>;;
     type: string
   }
 

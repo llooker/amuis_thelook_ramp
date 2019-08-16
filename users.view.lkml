@@ -117,6 +117,11 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  dimension: looker_user_name {
+    type: string
+    sql: '{{ _user_attributes['name'] }}';;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, first_name, last_name, events.count, order_items.count]
