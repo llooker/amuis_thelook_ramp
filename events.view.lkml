@@ -108,13 +108,18 @@ view: events {
     sql: ${TABLE}.zip ;;
   }
 
+  dimension: is_east_coast {
+    type: yesno
+    sql: ${state} in ('Maine', 'Vermont', 'New Hampshire', 'Massechusetts', 'Rhode Island', 'Connecticut',
+     'New York', 'New Jersey', 'Pennsylvania', 'Delaware', 'Maryland', 'West Virginia', 'Virginia', 'North Carolina', 'South Carolina',
+     'Georgia', 'Alabama', 'Florida');;
+  }
+
   measure: east_coast_count {
     type: count
     filters: {
-      field: state
-      value: "Maine, Vermont, New Hampshire, Massechusetts, Rhode Island, Connecticut,
-      New York, New Jersey, Pennsylvania, Delaware, Maryland, West Virginia, Virginia, North Carolina, South Carolina,
-      Georgia, Alabama, Florida"
+      field: is_east_coast
+      value: "yes"
     }
   }
 
