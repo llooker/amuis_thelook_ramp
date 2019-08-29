@@ -95,7 +95,7 @@ view: users {
         default:
         "Dear {{ users.first_name._value }},
 
-        We saw you had some doubts on your last purchase. To help you decide we'd like to offer you a 10% discount
+        We saw you had some doubts at checkout recently. To help you decide we'd like to offer you a 10% discount
         on your purchase!  Just use the code IWANTIT when checking out!
 
         Your friends at First Dashboard"
@@ -107,7 +107,7 @@ view: users {
 
   dimension: first_name {
     type: string
-    sql: ${TABLE}.first_name ;;
+    sql: INITCAP(${TABLE}.first_name) ;;
   }
 
   dimension: gender {
@@ -117,7 +117,7 @@ view: users {
 
   dimension: last_name {
     type: string
-    sql: ${TABLE}.last_name ;;
+    sql: INITCAP(${TABLE}.last_name) ;;
   }
 
   dimension: latitude {

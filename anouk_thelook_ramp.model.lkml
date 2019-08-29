@@ -50,22 +50,22 @@ explore: events {
   }
   join: events_sessionized {
     view_label: "Events"
-    relationship: one_to_one
     type: inner
     sql_on: ${events.id} = ${events_sessionized.event_id} ;;
+    relationship: one_to_one
   }
 
   join: sessions {
-    relationship: many_to_one
     type: left_outer
     sql_on: ${events_sessionized.unique_session_id} = ${sessions.unique_session_id} ;;
+    relationship: many_to_one
   }
 
   join: session_facts {
-    relationship: many_to_one
     type: inner
     view_label: "Sessions"
     sql_on: ${sessions.unique_session_id} = ${session_facts.unique_session_id} ;;
+    relationship: many_to_one
   }
 }
 
@@ -124,6 +124,13 @@ explore: order_items {
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
     relationship: many_to_one
     fields: [distribution_centers.id, distribution_centers.latitude, distribution_centers.longitude, distribution_centers.name]
+  }
+
+  join: order_facts {
+    type: left_outer
+    sql_on: ${order_items.order_id}=${order_facts.order_id} ;;
+    relationship: many_to_many
+    #CHECK WITH JON...
   }
 }
 
