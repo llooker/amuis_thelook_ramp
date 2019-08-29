@@ -33,6 +33,12 @@ view: order_facts {
     value_format_name: usd
   }
 
+  measure: average_item_count {
+    type: average
+    sql: ${item_count} ;;
+    value_format_name: decimal_0
+  }
+
   set: detail {
     fields: [order_id, user_id, item_count, order_total]
   }
