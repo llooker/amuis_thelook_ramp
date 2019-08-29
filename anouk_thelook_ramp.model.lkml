@@ -34,12 +34,12 @@ explore: distribution_centers {
 }
 
 explore: events {
-  always_filter: {
-    filters: {
-      field: users.country
-      value: "USA"
-    }
-  }
+  #always_filter: {
+  #  filters: {
+  #    field: users.country
+  #    value: "USA"
+  #  }
+  #}
   label: "(1) US Event Data"
   hidden: no
   persist_with: four_hour_dataload
@@ -47,6 +47,25 @@ explore: events {
     type: inner
     sql_on: ${events.user_id} = ${users.id} ;;
     relationship: many_to_one
+  }
+  join: events_sessionized {
+    view_label: "Events"
+    relationship: one_to_one
+    type: inner
+    sql_on: ${events.id} = ${events_sessionized.event_id} ;;
+  }
+
+  join: sessions {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${events_sessionized.unique_session_id} = ${sessions.unique_session_id} ;;
+  }
+
+  join: session_facts {
+    relationship: many_to_one
+    type: inner
+    view_label: "Sessions"
+    sql_on: ${sessions.unique_session_id} = ${session_facts.unique_session_id} ;;
   }
 }
 
