@@ -59,6 +59,7 @@ view: events_sessionized {
     }
 
     dimension: event_type {
+      label: "Event Type (Sessionized)"
       type: string
       sql: ${TABLE}.event_type ;;
     }
