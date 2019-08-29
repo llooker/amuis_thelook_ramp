@@ -96,6 +96,11 @@ view: session_facts {
     sql: DATEDIFF('sec', ${TABLE}.session_start, ${TABLE}.session_end) ;;
   }
 
+  dimension: session_length_minutes {
+    type: number
+    sql: ${session_length_seconds}/60 ;;
+  }
+
   dimension: session_length_seconds_tier {
     type: tier
     tiers: [
