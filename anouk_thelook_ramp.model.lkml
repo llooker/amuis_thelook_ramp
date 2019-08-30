@@ -97,10 +97,10 @@ explore: inventory_items {
 
 explore: order_items {
   hidden: no
-  sql_always_where: ${inventory_items.product_brand} <> 'Nintendo' AND ${inventory_items.product_category} <> 'Accessories'
-  AND ${distribution_centers.name} <> 'Savannah GA';;
+  #sql_always_where: ${inventory_items.product_brand} <> 'Nintendo' AND ${inventory_items.product_category} <> 'Accessories'
+  #AND ${distribution_centers.name} <> 'Savannah GA';;
   #After recall following Southern kids choking on Gameboys, Nintendo's shipped from Georgia should be excluded for all reporting purposes
-  label: "(3) Post-Recall Order Items"
+  label: "(3) Order Items"
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
