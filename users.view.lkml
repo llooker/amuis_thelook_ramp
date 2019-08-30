@@ -15,7 +15,7 @@ view: users {
   dimension: age_tier {
     type: tier
     drill_fields: [age]
-    tiers: [10,15,20,25,30,35,40,45,50,55,60,65,70]
+    tiers: [10,20,35,55,70]
     sql:  ${age} ;;
     style: integer
   }

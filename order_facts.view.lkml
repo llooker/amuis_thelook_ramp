@@ -13,6 +13,7 @@ view: order_facts {
   }
 
   dimension: order_id {
+    primary_key: yes
     type: number
     sql: ${TABLE}.order_id ;;
   }
@@ -40,6 +41,6 @@ view: order_facts {
   }
 
   set: detail {
-    fields: [order_id, user_id, item_count, order_total]
+    fields: [order_id, user_id, item_count, order_total, average_item_count]
   }
 }
