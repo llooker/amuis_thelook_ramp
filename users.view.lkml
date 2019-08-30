@@ -25,23 +25,23 @@ view: users {
     case: {
       when: {
         sql: ${TABLE}.age BETWEEN 0 AND 12 ;;
-        label: "kids"
+        label: "Kids"
       }
       when: {
         sql: ${TABLE}.age BETWEEN 12 AND 17 ;;
-        label: "teenagers"
+        label: "Teenagers"
       }
       when: {
         sql: ${TABLE}.age BETWEEN 17 AND 25 ;;
-        label: "adolescents"
+        label: "Adolescents"
       }
       when: {
         sql: ${TABLE}.age BETWEEN 25 AND 65 ;;
-        label: "adults"
+        label: "Adults"
       }
       when: {
         sql: ${TABLE}.age > 65 ;;
-        label: "eldery"
+        label: "Eldery"
       }
       else: "unknown"
     }
