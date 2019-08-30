@@ -131,6 +131,12 @@ explore: order_items {
     sql_on: ${order_items.order_id}=${order_facts.order_id} AND ${order_items.user_id} = ${order_facts.user_id};;
     relationship: many_to_one
   }
+
+  join: customer_ltv {
+    type: left_outer
+    sql_on: ${users.id} = ${customer_ltv.user_id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: products {
