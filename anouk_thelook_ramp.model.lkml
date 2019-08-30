@@ -128,7 +128,7 @@ explore: order_items {
 
   join: order_facts {
     type: left_outer
-    sql_on: ${order_items.order_id}=${order_facts.order_id};;
+    sql_on: ${order_items.order_id}=${order_facts.order_id} AND ${order_items.user_id} = ${order_facts.user_id};;
     relationship: many_to_one
   }
 }
