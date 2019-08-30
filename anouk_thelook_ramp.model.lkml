@@ -137,6 +137,12 @@ explore: order_items {
     sql_on: ${users.id} = ${customer_ltv.user_id} ;;
     relationship: many_to_one
   }
+
+  join: inventory_facts {
+    type: left_outer
+    sql_on: ${inventory_items.product_sku} = ${inventory_facts.product_sku} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: products {
