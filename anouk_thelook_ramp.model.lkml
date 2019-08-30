@@ -129,7 +129,7 @@ explore: order_items {
   join: order_facts {
     type: left_outer
     sql_on: ${order_items.order_id}=${order_facts.order_id} ;;
-    relationship: many_to_many
+    relationship: one_to_one
     #CHECK WITH JON...
   }
 }

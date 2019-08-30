@@ -1,6 +1,6 @@
 view: order_facts {
   derived_table: {
-    sql: SELECT order_id, user_id, COUNT(id) as item_count, SUM(sale_price) as order_total
+    sql: SELECT order_id, user_id, COUNT(*) as item_count, SUM(sale_price) as order_total
       FROM   public.order_items
       GROUP BY order_id, user_id
       ORDER BY 3 DESC
@@ -37,7 +37,7 @@ view: order_facts {
   measure: average_item_count {
     type: average
     sql: ${item_count} ;;
-    value_format_name: decimal_0
+    value_format_name: decimal_2
   }
 
   set: detail {
