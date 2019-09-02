@@ -1,5 +1,8 @@
 view: order_facts {
   derived_table: {
+    distribution: "order_id"
+    sortkeys: ["order_id"]
+    datagroup_trigger: order_items
     sql: SELECT order_id, user_id, COUNT(*) as item_count, SUM(sale_price) as order_total
       FROM   public.order_items
       GROUP BY order_id, user_id

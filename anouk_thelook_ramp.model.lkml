@@ -10,6 +10,11 @@ datagroup: anouk_thelook_ramp_default_datagroup {
   max_cache_age: "24 hour"
 }
 
+datagroup: order_items {
+  sql_trigger: SELECT max(completed_at) FROM ecomm.etl_jobs ;;
+  max_cache_age: "12 hours"}
+persist_with: ecommerce_etl
+
 datagroup: four_hour_dataload {
   #sql_trigger: SELECT MAX(completed_at) FROM etl_jobs ;;
   max_cache_age: "4 hours"
