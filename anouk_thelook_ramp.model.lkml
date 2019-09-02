@@ -143,6 +143,12 @@ explore: order_items {
     sql_on: ${inventory_items.product_sku} = ${inventory_facts.product_sku} ;;
     relationship: many_to_one
   }
+
+  join: user_facts_ndt {
+    type: left_outer
+    sql_on: users.id = ${user_facts_ndt.id} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: products {

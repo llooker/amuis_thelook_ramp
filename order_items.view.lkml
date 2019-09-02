@@ -106,6 +106,12 @@ view: order_items {
     sql:${TABLE}.sale_price ;;
   }
 
+  measure: average_sales_price {
+    type: average
+    drill_fields: [detail*]
+    sql: ${TABLE}.sale_price ;;
+  }
+
   measure: returned_count {
     type: count_distinct
     sql: ${returned_date} ;;

@@ -33,10 +33,18 @@ view: inventory_facts {
     value_format_name: percent_2
   }
 
+  measure: inventory_on_hand {
+    type: sum
+    sql: ${total_cost_inventory} - ${cost_of_goods_sold};;
+    value_format_name: usd
+  }
+
   measure:avg_percentage_inventory_sold {
     type: average
     sql: ${pct_inv_sold} ;;
     value_format_name: percent_2
+    #Implement colour coding for overstocked product categories/brands
+#    html: <p style="color: black; background-color: rgba({{ value | times: -100.0 | round | plus: 250 }},{{value | times: 100.0 | round | plus: 100}},100,80); font-size:100%; text-align:center">{{ rendered_value }}</p> ;;
   }
 
   set: detail {
